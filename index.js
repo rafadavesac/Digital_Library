@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "capstoneLibrary",
-  password: "rafa1503",
-  port: 5432,
+  user: PG_USER,
+  host: PG_HOST,
+  database: PG_DATABASE,
+  password: PG_PASSWORD,
+  port: PG_PORT,
 })
 
 db.connect()
