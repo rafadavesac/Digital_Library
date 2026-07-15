@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Livro</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body class="bg-neutral-900 text-white min-h-screen">
+
+<main class="max-w-3xl mx-auto py-12 px-6">
+
+    <a href="/books/<%= book.id %>" class="text-red-400 hover:underline">
+        ← Voltar
+    </a>
+
+    
+
+    <form action="/books/edit" method="POST" class="space-y-5">
+
+        <input
+            type="hidden"
+            name="bookId"
+            value="<%= book.id %>"
+        >
+
+        <div>
+            <label>Título</label>
+            <input
+                class="w-full text-black p-2 rounded"
+                type="text"
+                name="title"
+                value="<%= book.title %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Autor</label>
+            <input
+                class="w-full text-black p-2 rounded"
+                type="text"
+                name="author"
+                value="<%= book.author %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>ISBN</label>
+            <input
+                class="w-full text-black p-2 rounded"
+                type="text"
+                name="isbn"
+                value="<%= book.isbn %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Avaliação</label>
+            <input
+                class="w-full text-black p-2 rounded"
+                type="number"
+                name="rating"
+                min="1"
+                max="5"
+                value="<%= book.rating %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Data de leitura</label>
+            <input
+                class="w-full text-black p-2 rounded"
+                type="date"
+                name="date_read"
+                value="<%= book.date_read.toISOString().split("T")[0] %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Notas</label>
+
+            <textarea
+                class="w-full text-black p-2 rounded"
+                name="notes"
+                rows="8"
+            ><%= book.notes %></textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="bg-red-500 hover:bg-red-400 px-6 py-3 rounded"
+        >
+            Salvar alterações
+        </button>
+
+    </form>
+
+</main>
+
+</body>
+</html>

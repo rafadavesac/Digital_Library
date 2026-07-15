@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Livro</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body class="bg-neutral-900 text-white min-h-screen">
+
+  <main class="max-w-3xl mx-auto px-8 py-12">
+
+    <a href="/" class="text-red-400 hover:underline">
+      ← Voltar
+    </a>
+
+    <h1 class="text-4xl text-red-400 font-bold mt-8 mb-8">
+      Adicionar novo livro
+    </h1>
+
+
+    <form action="/books/new" method="POST" class="space-y-5">
+
+
+      <div>
+        <label>Título:</label>
+
+        <input
+          class="w-full text-black p-2 rounded"
+          type="text"
+          name="title"
+          required
+        >
+      </div>
+
+
+      <div>
+        <label>Autor:</label>
+
+        <input
+          class="w-full text-black p-2 rounded"
+          type="text"
+          name="author"
+          required
+        >
+      </div>
+
+
+      <div>
+        <label>ISBN:</label>
+
+        <input
+          class="w-full text-black p-2 rounded"
+          type="text"
+          name="isbn"
+          required
+        >
+      </div>
+
+
+      <div>
+        <label>Avaliação:</label>
+
+        <input
+          class="w-full text-black p-2 rounded"
+          type="number"
+          name="rating"
+          min="1"
+          max="5"
+          required
+        >
+      </div>
+
+
+      <div>
+        <label>Data de leitura:</label>
+
+        <input
+          class="w-full text-black p-2 rounded"
+          type="date"
+          name="date_read"
+          required
+        >
+      </div>
+
+
+      <div>
+        <label>Notas:</label>
+
+        <textarea
+          class="w-full text-black p-2 rounded"
+          name="notes"
+          rows="8"
+        ></textarea>
+      </div>
+
+
+      <button
+        type="submit"
+        class="bg-red-500 hover:bg-red-400 px-6 py-3 rounded"
+      >
+        Adicionar livro
+      </button>
+
+
+    </form>
+
+  </main>
+
+</body>
+
+</html>
+

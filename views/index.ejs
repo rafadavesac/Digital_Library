@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title><%= libraryName %></title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <body class="bg-neutral-900 text-white min-h-screen">
+
+  <header class="flex flex-col items-center gap-6 pt-16 pb-12">
+    <h1 class="font-display text-5xl text-red-400"><%= libraryName %></h1>
+    <a href="/books/new" class="bg-neutral-200 text-neutral-900 font-medium px-6 py-3 rounded-full hover:bg-white transition">
+      New Book +
+    </a>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-8 pb-16">
+    <% if (error) { %>
+      <p><%= error  %></p>
+    <% } %>
+    <% for (const mesAno in groupedBooks) { %>
+      <section class="mb-10">
+        <h2 class="font-display text-2xl text-red-400 mb-4"><%= mesAno %></h2>
+
+        <div class="flex gap-4 overflow-x-auto">
+          <% groupedBooks[mesAno].forEach(book => { %>
+            <a href="/books/<%= book.id %>" class="shrink-0">
+              <img
+                src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg"
+                alt="<%= book.title %>"
+                class="w-32 h-44 object-cover bg-neutral-200 rounded"
+              >
+            </a>
+          <% }) %>
+        </div>
+      </section>
+    <% } %>
+  </main>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</body>
+</html>

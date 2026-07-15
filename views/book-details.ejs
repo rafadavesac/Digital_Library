@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title><%= book.title %> | Digital Library</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body class="bg-neutral-900 text-white min-h-screen">
+
+  <main class="max-w-4xl mx-auto px-8 py-12">
+
+    <a href="/" class="text-red-400 hover:underline">
+      ← Voltar para a biblioteca
+    </a>
+
+    <div class="mt-8 flex flex-col md:flex-row gap-8">
+
+      <img
+        src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg"
+        alt="<%= book.title %>"
+        class="w-64 rounded shadow-lg"
+      >
+
+      <div class="flex-1">
+
+        <h1 class="text-4xl font-bold text-red-400 mb-2">
+          <%= book.title %>
+        </h1>
+
+        <p class="text-xl text-neutral-300 mb-6">
+          <%= book.author %>
+        </p>
+
+        <div class="space-y-3">
+
+          <p>
+            <strong>ISBN:</strong>
+            <%= book.isbn %>
+          </p>
+
+          <p>
+            <strong>Avaliação:</strong>
+            <%= book.rating %>/5
+          </p>
+
+          <p>
+            <strong>Data de leitura:</strong>
+            <%= book.date_read.toISOString().split("T")[0] %>
+          </p>
+
+        </div>
+
+        <div class="mt-8">
+          <h2 class="text-2xl font-semibold mb-2">
+            Notas
+          </h2>
+
+          <p class="whitespace-pre-line text-neutral-300">
+            <%= book.notes %>
+          </p>
+        </div>
+
+        <div class="flex gap-4 mt-10">
+
+          <a
+            href="/books/<%= book.id %>/edit"
+            class="bg-yellow-500 hover:bg-yellow-400 text-black font-medium px-5 py-2 rounded"
+          >
+            Editar
+          </a>
+
+          <form action="/books/delete" method="POST">
+            <input
+              type="hidden"
+              name="bookId"
+              value="<%= book.id %>"
+            >
+
+            <button
+              type="submit"
+              class="bg-red-600 hover:bg-red-500 px-5 py-2 rounded"
+            >
+              Deletar
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
+
